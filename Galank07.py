@@ -186,69 +186,69 @@ def backupData():
         return False
 
 def helpmessage():
-    helpMessage = "╔══[нєℓρ мєѕѕαgє]" + "\n" + \
-                  "╠ Help" + "\n" + \
-                  "╠ Translate" + "\n" + \
-                  "╠ TextToSpeech" + "\n" + \
-                  "╠══[ Status Command ]" + "\n" + \
-                  "╠ Restart" + "\n" + \
-                  "╠ Runtime" + "\n" + \
-                  "╠ Speed" + "\n" + \
-                  "╠ Status" + "\n" + \
-                  "╠ About" + "\n" + \
-                  "╠══[ Settings Command ]" + "\n" + \
-                  "╠ AutoAdd「On/Off」" + "\n" + \
-                  "╠ AutoJoin「On/Off」" + "\n" + \
-                  "╠ AutoLeave「On/Off」" + "\n" + \
-                  "╠ AutoRead「On/Off」" + "\n" + \
-                  "╠ CheckSticker「On/Off」" + "\n" + \
-                  "╠ DetectMention「On/Off」" + "\n" + \
-                  "╠══[ Self Command ]" + "\n" + \
-                  "╠ Me" + "\n" + \
-                  "╠ MyMid" + "\n" + \
-                  "╠ MyName" + "\n" + \
-                  "╠ MyBio" + "\n" + \
-                  "╠ MyPicture" + "\n" + \
-                  "╠ MyVideoProfile" + "\n" + \
-                  "╠ MyCover" + "\n" + \
-                  "╠ StealContact「Mention」" + "\n" + \
-                  "╠ StealMid「Mention」" + "\n" + \
-                  "╠ StealName「Mention」" + "\n" + \
-                  "╠ StealBio「Mention」" + "\n" + \
-                  "╠ StealPicture「Mention」" + "\n" + \
-                  "╠ StealVideoProfile「Mention」" + "\n" + \
-                  "╠ StealCover「Mention」" + "\n" + \
-                  "╠ CloneProfile「Mention」" + "\n" + \
-                  "╠ RestoreProfile" + "\n" + \
-                  "╠══[ Group Command ]" + "\n" + \
-                  "╠ GroupCreator" + "\n" + \
-                  "╠ GroupId" + "\n" + \
-                  "╠ GroupName" + "\n" + \
-                  "╠ GroupPicture" + "\n" + \
-                  "╠ GroupTicket" + "\n" + \
-                  "╠ GroupTicket「On/Off」" + "\n" + \
-                  "╠ GroupList" + "\n" + \
-                  "╠ GroupMemberList" + "\n" + \
-                  "╠ GroupInfo" + "\n" + \
-                  "╠══[ Special Command ]" + "\n" + \
-                  "╠ Mimic「On/Off」" + "\n" + \
-                  "╠ MimicList" + "\n" + \
-                  "╠ MimicAdd「Mention」" + "\n" + \
-                  "╠ MimicDel「Mention」" + "\n" + \
-                  "╠ Mention" + "\n" + \
-                  "╠ Lurking「On/Off/Reset」" + "\n" + \
-                  "╠ Lurking" + "\n" + \
-                  "╠══[ Media Command ]" + "\n" + \
-                  "╠ Kalender" + "\n" + \
-                  "╠ CheckDate「Date」" + "\n" + \
-                  "╠ InstagramInfo「UserName」" + "\n" + \
-                  "╠ InstagramPost「UserName」" + "\n" + \
-                  "╠ SearchYoutube「Search」" + "\n" + \
-                  "╠ SearchMusic「Search」" + "\n" + \
-                  "╠ SearchLyric「Search」" + "\n" + \
-                  "╠ SearchImage「Search」" + "\n" + \
-                  "╠ ScreenshootWebsite「LinkURL」" + "\n" + \
-                  "╚══[     Ｈｅｌｌｏ Ｗｏｒｌｄ      ]"
+    helpMessage = "╔══[HΣLP MΣSSΔGΣ]" + "\n" + \
+                  "╠➣ Help" + "\n" + \
+                  "╠➣ Translate" + "\n" + \
+                  "╠➣ TextToSpeech" + "\n" + \
+                  "╠══[ STΔTUS CΩMMΔΠD ]" + "\n" + \
+                  "╠➣ Restart" + "\n" + \
+                  "╠➣ Runtime" + "\n" + \
+                  "╠➣ Speed" + "\n" + \
+                  "╠➣ Status" + "\n" + \
+                  "╠➣ About" + "\n" + \
+                  "╠══[ SΣTTIΠGS CΩMMΔΠD ]" + "\n" + \
+                  "╠➣ AutoAdd「On/Off」" + "\n" + \
+                  "╠➣ AutoJoin「On/Off」" + "\n" + \
+                  "╠➣ AutoLeave「On/Off」" + "\n" + \
+                  "╠➣ AutoRead「On/Off」" + "\n" + \
+                  "╠➣ CheckSticker「On/Off」" + "\n" + \
+                  "╠➣ DetectMention「On/Off」" + "\n" + \
+                  "╠══[ SΣLҒ CΩMMΔΠD ]" + "\n" + \
+                  "╠➣ Me" + "\n" + \
+                  "╠➣ MyMid" + "\n" + \
+                  "╠➣ MyName" + "\n" + \
+                  "╠➣ MyBio" + "\n" + \
+                  "╠➣ MyPicture" + "\n" + \
+                  "╠➣ MyVideoProfile" + "\n" + \
+                  "╠➣ MyCover" + "\n" + \
+                  "╠➣ StealContact「Mention」" + "\n" + \
+                  "╠➣ StealMid「Mention」" + "\n" + \
+                  "╠➣ StealName「Mention」" + "\n" + \
+                  "╠➣ StealBio「Mention」" + "\n" + \
+                  "╠➣ StealPicture「Mention」" + "\n" + \
+                  "╠➣ StealVideoProfile「Mention」" + "\n" + \
+                  "╠➣ StealCover「Mention」" + "\n" + \
+                  "╠➣ CloneProfile「Mention」" + "\n" + \
+                  "╠➣ RestoreProfile" + "\n" + \
+                  "╠══[ GRΩUP CΩMMΔΠD ]" + "\n" + \
+                  "╠➣ GroupCreator" + "\n" + \
+                  "╠➣ GroupId" + "\n" + \
+                  "╠➣ GroupName" + "\n" + \
+                  "╠➣ GroupPicture" + "\n" + \
+                  "╠➣ GroupTicket" + "\n" + \
+                  "╠➣ GroupTicket「On/Off」" + "\n" + \
+                  "╠➣ GroupList" + "\n" + \
+                  "╠➣ GroupMemberList" + "\n" + \
+                  "╠➣ GroupInfo" + "\n" + \
+                  "╠══[ SPΣSIΔL CΩMMΔΠD ]" + "\n" + \
+                  "╠➣ Mimic「On/Off」" + "\n" + \
+                  "╠➣ MimicList" + "\n" + \
+                  "╠➣ MimicAdd「Mention」" + "\n" + \
+                  "╠➣ MimicDel「Mention」" + "\n" + \
+                  "╠➣ Mention" + "\n" + \
+                  "╠➣ Lurking「On/Off/Reset」" + "\n" + \
+                  "╠➣ Lurking" + "\n" + \
+                  "╠══[ MΣDIΔ CΩMMΔΠD ]" + "\n" + \
+                  "╠➣ Kalender" + "\n" + \
+                  "╠➣ CheckDate「Date」" + "\n" + \
+                  "╠➣ InstagramInfo「UserName」" + "\n" + \
+                  "╠➣ InstagramPost「UserName」" + "\n" + \
+                  "╠➣ SearchYoutube「Search」" + "\n" + \
+                  "╠➣ SearchMusic「Search」" + "\n" + \
+                  "╠➣ SearchLyric「Search」" + "\n" + \
+                  "╠➣ SearchImage「Search」" + "\n" + \
+                  "╠➣ ScreenshootWebsite「LinkURL」" + "\n" + \
+                  "╚══[     TΣΔM SLΔCҜβΩT      ]"
     return helpMessage
     
 def helptexttospeech():
@@ -307,7 +307,7 @@ def helptexttospeech():
                          "╠ vi : Vietnamese" + "\n" + \
                          "╠ cy : Welsh" + "\n" + \
                          "╚══[ Jangan Typo ]" + "\n" + "\n\n" + \
-                          "Contoh : ˢᴬᵞ-ᴵᴰ ᶠᴱᴺᴰᵞ ᴶᴱᴸᴱˣ"
+                          "Contoh : Say-Id Galank Ganteng"
     return helpTextToSpeech
     
 def helptranslate():
@@ -419,7 +419,7 @@ def helptranslate():
                        "╠ fil : Filipino" + "\n" + \
                        "╠ he : Hebrew" + "\n" + \
                        "╚══[ Jangan Typo ]" + "\n" + "\n\n" + \
-                         "Contoh : ˢᴬᵞ-ᴵᴰ ᶠᴱᴺᴰᵞ ᴶᴱᴸᴱˣ"
+                         "Contoh : Say-Id Galank Gateng"
     return helpTranslate
 #==============================================================================#
 def lineBot(op):
@@ -461,7 +461,7 @@ def lineBot(op):
                 if text.lower() == 'help':
                     helpMessage = helpmessage()
                     line.sendMessage(to, str(helpMessage))
-                    line.sendContact(to, "u0a00a391145594006b682770275d06f0")
+                    line.sendContact(to, "u78643d09e42a36836a17cc918963a8b7")
                 elif text.lower() == 'texttospeech':
                     helpTextToSpeech = helptexttospeech()
                     line.sendMessage(to, str(helpTextToSpeech))
@@ -471,11 +471,11 @@ def lineBot(op):
 #==============================================================================#
                 elif text.lower() == 'speed':
                     start = time.time()
-                    line.sendMessage(to, "ρℓєα¢є ωαιтιиg")
+                    line.sendMessage(to, "█L▒o▒a▒d▒i▒▒n▒▒g▒")
                     elapsed_time = time.time() - start
                     line.sendMessage(to,format(str(elapsed_time)))
                 elif text.lower() == 'restart':
-                    line.sendMessage(to, "ℓєα¢є ωαιтιиg")
+                    line.sendMessage(to, "█L▒o▒a▒d▒i▒▒n▒▒g▒")
                     line.sendMessage(to, "∂σиє яєѕтαятιиg")
                     restartBot()
                 elif text.lower() == 'runtime':
@@ -486,7 +486,7 @@ def lineBot(op):
                 elif text.lower() == 'about':
                     try:
                         arr = []
-                        owner = "u0a00a391145594006b682770275d06f0"
+                        owner = "u78643d09e42a36836a17cc918963a8b7"
                         creator = line.getContact(owner)
                         contact = line.getContact(lineMID)
                         grouplist = line.getGroupIdsJoined()
@@ -498,16 +498,16 @@ def lineBot(op):
                         ret_ += "\n╠ Friend : {}".format(str(len(contactlist)))
                         ret_ += "\n╠ Blocked : {}".format(str(len(blockedlist)))
                         ret_ += "\n╠══[ About Selfbot ]"
-                        ret_ += "\n╠ Version : Beta Test"
+                        ret_ += "\n╠ Version : SLΔCҜβΩT"
                         ret_ += "\n╠ Creator : {}".format(creator.displayName)
-                        ret_ += "\n╚══[ Ｈｅｌｌｏ Ｗｏｒｌｄ ]"
+                        ret_ += "\n╚══[ TΣΔM SLΔCҜβΩT ]"
                         line.sendMessage(to, str(ret_))
                     except Exception as e:
                         line.sendMessage(msg.to, str(e))
 #==============================================================================#
                 elif text.lower() == 'status':
                     try:
-                        ret_ = "╔══[ Status ]"
+                        ret_ = "╔══[ STΔTUS ]"
                         if settings["autoAdd"] == True: ret_ += "\n╠ Auto Add ✅"
                         else: ret_ += "\n╠ Auto Add ❌"
                         if settings["autoJoin"] == True: ret_ += "\n╠ Auto Join ✅"
@@ -520,7 +520,7 @@ def lineBot(op):
                         else: ret_ += "\n╠ Check Sticker ❌"
                         if settings["detectMention"] == True: ret_ += "\n╠ Detect Mention ✅"
                         else: ret_ += "\n╠ Detect Mention ❌"
-                        ret_ += "\n╚══[ Status ]"
+                        ret_ += "\n╚══[ STΔTUS ]"
                         line.sendMessage(to, str(ret_))
                     except Exception as e:
                         line.sendMessage(msg.to, str(e))
