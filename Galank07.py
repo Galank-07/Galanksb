@@ -2555,7 +2555,7 @@ def GalankBot(op):
                     text = msg.text
                     if text is not None:
                         Galank.sendMessage(msg.to,text)
-                if msg.contentType == 0 and sender not in lineMID and msg.toType == 2:
+                if msg.contentType == 0 and sender not in GalankMID and msg.toType == 2:
                     if 'MENTION' in msg.contentMetadata.keys()!= None:
                         names = re.findall(r'@(\w+)', text)
                         mention = ast.literal_eval(msg.contentMetadata['MENTION'])
