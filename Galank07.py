@@ -15,7 +15,7 @@ botStart = time.time()
 #Galank = LINE()
 Galank = LINE("TOKENMU BEB")
 #Galank = LINE("Email","Password")
-Galank = LINE()
+#Galank = LINE()
 Galank.log("Auth Token : " + str(Galank.authToken))
 channelToken = Galank.getChannelResult()
 Galank.log("Channel Token : " + str(channelToken))
@@ -226,7 +226,7 @@ def helpmessage():
                   "╠➣ GroupList" + "\n" + \
                   "╠➣ GroupMemberList" + "\n" + \
                   "╠➣ GroupInfo" + "\n" + \
-                  "╠══[ SPΣSIΔL CΩMMΔΠD ]" + "\n" + \
+                  "╠➣ Creator" + "\n" + \
                   "╠➣ Mimic「On/Off」" + "\n" + \
                   "╠➣ MimicList" + "\n" + \
                   "╠➣ MimicAdd「Mention」" + "\n" + \
