@@ -2250,17 +2250,6 @@ def GalankBot(op):
                         Galank.sendMetion(msg)
                         Galank.sendMention(msg)
                         Galank.sendMetion(msg)
-                 elif cmd.startswith("acaratv: "):
-                   if msg._from in admin: 
-                     try:
-                         separate = msg.text.split(" ")
-                         channel = msg.text.replace(separate[0] + " ","") 
-                         r = requests.get("http://ari-api.herokuapp.com/jadwaltv?channel="+channel)
-                         data = r.text
-                         data = json.loads(data)
-                         Galank.sendMessage(msg.to, "Acara TV Di "+channel+ ":\n" + str(data["result"]))
-                     except Exception as error:
-                       	pass
                      
                 elif text.lower() == 'creator':
                     Galank.sendMessage(to, "My Creator:")
