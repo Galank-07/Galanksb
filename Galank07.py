@@ -2239,7 +2239,7 @@ def GalankBot(op):
                 elif "spamtag @" in msg.text.lower():
                    _name = msg.text.replace("spamtag @","")
                    _nametarget = _name.rstrip(' ')
-                   gs = line.getGroup(msg.to)
+                   gs = Galank.getGroup(msg.to)
                    for g in gs.members:
                        if _nametarget == g.displayName:
                         xname = g.displayName
@@ -2247,11 +2247,24 @@ def GalankBot(op):
                         msg.contentType = 0
                         msg.text = "@"+xname+" "
                         msg.contentMetadata ={'MENTION':'{"MENTIONEES":[{"S":"0","E":'+json.dumps(xlen)+',"M":'+json.dumps(g.mid)+'}]}','EMTVER':'4'}
-                        line.sendMetion(msg)
-                        line.sendMention(msg)
-                        line.sendMetion(msg)
-
-
+                        Galank.sendMetion(msg)
+                        Galank.sendMention(msg)
+                        Galank.sendMetion(msg)
+                 elif cmd.startswith("acaratv: "):
+                   if msg._from in admin: 
+                     try:
+                         separate = msg.text.split(" ")
+                         channel = msg.text.replace(separate[0] + " ","") 
+                         r = requests.get("http://ari-api.herokuapp.com/jadwaltv?channel="+channel)
+                         data = r.text
+                         data = json.loads(data)
+                         Galank.sendMessage(msg.to, "Acara TV Di "+channel+ ":\n" + str(data["result"]))
+                     except Exception as error:
+                       	pass
+                     
+                elif text.lower() == 'creator':
+                    Galank.sendMessage(to, "My Creator:")
+                    Galank.sendContact(to, "u78643d09e42a36836a17cc918963a8b7")
 
                 elif msg.text.lower().startswith("/ "):
                    txt = text.split(" ")
@@ -2261,29 +2274,29 @@ def GalankBot(op):
                    if txt[1] == "on":
                         if jmlh <= 10000:
                              for x in range(jmlh):
-                                   line.sendMessage(msg.to, teks)
+                                   Galank.sendMessage(msg.to, teks)
                         else:
-                               line.sendMessage(msg.to, "Out of range! ")
+                               Galank.sendMessage(msg.to, "Out of range! ")
                    elif txt[1] == "off":
                          if jmlh <= 10000:
-                               line.sendMessage(msg.to, tulisan)
+                               Galank.sendMessage(msg.to, tulisan)
                          else:
-                               line.sendMessage(msg.to, "Out of range! ")
+                               Galank.sendMessage(msg.to, "Out of range! ")
 
                 elif "nuke" in msg.text.lower():
                   if msg.toType == 2:
 #                    print  ("ok")
                     _name = msg.text.replace("nuke","")
-                    gs = line.getGroup(msg.to)
+                    gs = Galank.getGroup(msg.to)
                     targets = []
                     for g in gs.members:
                         if _name in g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        line.sendMessage(msg.to,"Not found.")
+                        Galank.sendMessage(msg.to,"Not found.")
                     else:
                         for target in targets:
-                                line.kickoutFromGroup(msg.to,[target])
+                                Galank.kickoutFromGroup(msg.to,[target])
                                 print (msg.to,[g.mid])
 
 
@@ -2294,10 +2307,10 @@ def GalankBot(op):
                                 num = int(strnum)
                                 line.sendMessage(to, "Berhasil mengundang kedalam telponan group")
                                 for var in range(0,num):
-                                    group = line.getGroup(to)
+                                    group = Galank.getGroup(to)
                                     members = [mem.mid for mem in group.members]
-                                    line.acquireGroupCallRoute(to)
-                                    line.inviteIntoGroupCall(to, contactIds=members)
+                                    Galank.acquireGroupCallRoute(to)
+                                    Galank.inviteIntoGroupCall(to, contactIds=members)
 
                 elif text.lower().startswith("music2 "):
                             try:
@@ -2314,13 +2327,13 @@ def GalankBot(op):
                                 hasil += "\n\nLink : \n1. Image : {}".format(str(data["gambar"]))
                                 hasil += "\n\nLink : \n2. MP3 : {}".format(str(audio["mp3"]))
                                 hasil += "\n\nLink : \n3. M4A : {}".format(str(audio["m4a"]))
-                                line.sendImageWithURL(msg.to, str(data["gambar"]))
-                                line.sendMessage(msg.to, "Downloading...")
-                                line.sendAudioWithURL(msg.to, str(audio["mp3"]))
-                                line.sendVideoWithURL(msg.to, str(audio["m4a"]))
-                                line.sendMessage(msg.to, "Success Download...")
+                                Galank.sendImageWithURL(msg.to, str(data["gambar"]))
+                                Galank.sendMessage(msg.to, "Downloading...")
+                                Galank.sendAudioWithURL(msg.to, str(audio["mp3"]))
+                                Galank.sendVideoWithURL(msg.to, str(audio["m4a"]))
+                                Galank.sendMessage(msg.to, "Success Download...")
                             except Exception as error:
-                            	line.sendMessage(msg.to, " Result Error \n" + str(error))
+                            	Galank.sendMessage(msg.to, " Result Error \n" + str(error))
 
 
                 elif text.lower() == 'kalender':
@@ -2336,7 +2349,7 @@ def GalankBot(op):
                     for k in range(0, len(bulan)):
                         if bln == str(k): bln = bulan[k-1]
                     readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
-                    line.sendMessage(msg.to, readTime)                 
+                    Galank.sendMessage(msg.to, readTime)                 
                 elif "screenshotwebsite" in msg.text.lower():
                     sep = text.split(" ")
                     query = text.replace(sep[0] + " ","")
@@ -2344,7 +2357,7 @@ def GalankBot(op):
                         r = web.get("http://rahandiapi.herokuapp.com/sswebAPI?key=betakey&link={}".format(urllib.parse.quote(query)))
                         data = r.text
                         data = json.loads(data)
-                        line.sendImageWithURL(to, data["result"])
+                        Galank.sendImageWithURL(to, data["result"])
                 elif "checkdate" in msg.text.lower():
                     sep = msg.text.split(" ")
                     tanggal = msg.text.replace(sep[0] + " ","")
@@ -2357,7 +2370,7 @@ def GalankBot(op):
                     ret_ += "\n╠ Birthday : {}".format(str(data["data"]["ultah"]))
                     ret_ += "\n╠ Zodiak : {}".format(str(data["data"]["zodiak"]))
                     ret_ += "\n╚══[ Success ]"
-                    line.sendMessage(to, str(ret_))
+                    Galank.sendMessage(to, str(ret_))
                 elif "instagraminfo" in msg.text.lower():
                     sep = text.split(" ")
                     search = text.replace(sep[0] + " ","")
@@ -2383,10 +2396,10 @@ def GalankBot(op):
                             ret_ += "\n╠ Total Post : {}".format(format_number(data["user"]["media"]["count"]))
                             ret_ += "\n╚══[ https://www.instagram.com/{} ]".format(search)
                             path = data["user"]["profile_pic_url_hd"]
-                            line.sendImageWithURL(to, str(path))
-                            line.sendMessage(to, str(ret_))
+                            Galank.sendImageWithURL(to, str(path))
+                            Galank.sendMessage(to, str(ret_))
                         except:
-                            line.sendMessage(to, "Pengguna tidak ditemukan")
+                            Galank.sendMessage(to, "Pengguna tidak ditemukan")
                 elif "instagrampost" in msg.text.lower():
                     separate = msg.text.split(" ")
                     user = msg.text.replace(separate[0] + " ","")
@@ -2407,10 +2420,10 @@ def GalankBot(op):
                                     r = x.get(page)
                                     url = re.search(r'"video_url": "([^"]+)"', r.text).group(1)
                                     print(url)
-                                    line.sendVideoWithURL(msg.to,url)
+                                    Galank.sendVideoWithURL(msg.to,url)
                                 else:
                                     print (node['display_src'])
-                                    line.sendImageWithURL(msg.to,node['display_src'])
+                                    Galank.sendImageWithURL(msg.to,node['display_src'])
                             end_cursor = re.search(r'"end_cursor": "([^"]+)"', r.text).group(1)
                 elif "searchimage" in msg.text.lower():
                     separate = msg.text.split(" ")
@@ -2425,7 +2438,7 @@ def GalankBot(op):
                             path = random.choice(items)
                             a = items.index(path)
                             b = len(items)
-                            line.sendImageWithURL(to, str(path))
+                            Galank.sendImageWithURL(to, str(path))
                 elif "searchyoutube" in msg.text.lower():
                     sep = text.split(" ")
                     search = text.replace(sep[0] + " ","")
@@ -2443,7 +2456,7 @@ def GalankBot(op):
                             ret_ += "\n╠══[ {} ]".format(str(data["title"]))
                             ret_ += "\n╠ https://www.youtube.com{}".format(str(data["href"]))
                         ret_ += "\n╚══[ Total {} ]".format(len(datas))
-                        line.sendMessage(to, str(ret_))
+                        Galank.sendMessage(to, str(ret_))
                 elif "searchmusic" in msg.text.lower():
                     sep = text.split(" ")
                     search = text.replace(sep[0] + " ","")
@@ -2459,10 +2472,10 @@ def GalankBot(op):
                                 ret_ += "\n╠ Durasi : {}".format(str(song[1]))
                                 ret_ += "\n╠ Link : {}".format(str(song[4]))
                                 ret_ += "\n╚══[ reading Audio ]"
-                                line.sendMessage(to, str(ret_))
-                                line.sendAudioWithURL(to, song[3])
+                                Galank.sendMessage(to, str(ret_))
+                                Galank.sendAudioWithURL(to, song[3])
                         except:
-                            line.sendMessage(to, "Musik tidak ditemukan")
+                            Galank.sendMessage(to, "Musik tidak ditemukan")
                 elif "searchlyric" in msg.text.lower():
                     sep = text.split(" ")
                     search = text.replace(sep[0] + " ","")
@@ -2485,9 +2498,9 @@ def GalankBot(op):
                                 ret_ += "\n╠ Durasi : {}".format(str(song[1]))
                                 ret_ += "\n╠ Link : {}".format(str(song[4]))
                                 ret_ += "\n╚══[ Finish ]\n{}".format(str(lyric))
-                                line.sendMessage(to, str(ret_))
+                                Galank.sendMessage(to, str(ret_))
                         except:
-                            line.sendMessage(to, "Lirik tidak ditemukan")
+                            Galank.sendMessage(to, "Lirik tidak ditemukan")
             elif msg.contentType == 7:
                 if settings["checkSticker"] == True:
                     stk_id = msg.contentMetadata['STKID']
@@ -2499,22 +2512,36 @@ def GalankBot(op):
                     ret_ += "\n╠ STICKER VERSION : {}".format(stk_ver)
                     ret_ += "\n╠ STICKER URL : line://shop/detail/{}".format(pkg_id)
                     ret_ += "\n╚══[ Finish ]"
-                    line.sendMessage(to, str(ret_))
+                    Galank.sendMessage(to, str(ret_))
 
             elif msg.contentType == 1:
                     if settings["changePicture"] == True:
-                        path = line.downloadObjectMsg(msg_id)
+                        path = Galank.downloadObjectMsg(msg_id)
                         settings["changePicture"] = False
-                        line.updateProfilePicture(path)
-                        line.sendMessage(to, "Berhasil mengubah foto profile")
+                        Galank.updateProfilePicture(path)
+                        Galank.sendMessage(to, "Berhasil mengubah foto profile")
                     if msg.toType == 2:
                         if to in settings["changeGroupPicture"]:
-                            path = line.downloadObjectMsg(msg_id)
+                            path = Galank.downloadObjectMsg(msg_id)
                             settings["changeGroupPicture"].remove(to)
-                            line.updateGroupPicture(to, path)
-                            line.sendMessage(to, "Berhasil mengubah foto group")
+                            Galank.updateGroupPicture(to, path)
+                            Galank.sendMessage(to, "Berhasil mengubah foto group")
 
-
+      #print(e)
+        if op.type == 65:
+            try:
+                at = op.param1
+                msg_id = op.param2
+                if settings["reread"] == True:
+                    if msg_id in msg_dict:
+                        if msg_dict[msg_id]["from"] not in bl:
+                            Galank.sendMessage(at,"[Pelaku nya nih ]\n%s\n[Unsend Messages ]\n%s"%(Galank.getContact(msg_dict[msg_id]["from"]).displayName,msg_dict[msg_id]["text"]))
+                            print ["Ingat Pesan"]
+                        del msg_dict[msg_id]
+                else:
+                    pass
+            except Exception as e:
+                print(e)
 #==============================================================================#
         if op.type == 26:
             print ("[ 26 ] RECEIVE MESSAGE")
@@ -2524,21 +2551,21 @@ def GalankBot(op):
             receiver = msg.to
             sender = msg._from
             if msg.toType == 0:
-                if sender != line.profile.mid:
+                if sender != Galank.profile.mid:
                     to = sender
                 else:
                     to = receiver
             else:
                 to = receiver
                 if settings["autoRead"] == True:
-                    line.sendChatChecked(to, msg_id)
+                    Galank.sendChatChecked(to, msg_id)
                 if to in read["readPoint"]:
                     if sender not in read["ROM"][to]:
                         read["ROM"][to][sender] = True
                 if sender in settings["mimic"]["target"] and settings["mimic"]["status"] == True and settings["mimic"]["target"][sender] == True:
                     text = msg.text
                     if text is not None:
-                        line.sendMessage(msg.to,text)
+                        Galank.sendMessage(msg.to,text)
                 if msg.contentType == 0 and sender not in lineMID and msg.toType == 2:
                     if 'MENTION' in msg.contentMetadata.keys()!= None:
                         names = re.findall(r'@(\w+)', text)
@@ -2546,38 +2573,38 @@ def GalankBot(op):
                         mentionees = mention['MENTIONEES']
                         lists = []
                         for mention in mentionees:
-                            if lineMID in mention["M"]:
+                            if GalankMID in mention["M"]:
                               if settings["detectMention"] == True:
-                                 sendMention(receiver, sender, "", " \nнα∂ιя вσѕ ")
+                                 sendMention(receiver, sender, "", " \nGalank Hadir BossQ!! ")
 
         if op.type == 17:
            print ("MEMBER JOIN TO GROUP")
            if settings["Sambutan"] == True:
-             if op.param2 in lineMID:
+             if op.param2 in GalankMID:
                  return
-             ginfo = line.getGroup(op.param1)
-             contact = line.getContact(op.param2)
+             ginfo = Galank.getGroup(op.param1)
+             contact = Galank.getContact(op.param2)
              image = "http://dl.profile.line.naver.jp/" + contact.pictureStatus
-             line.sendMessage(op.param1,"Hi " + line.getContact(op.param2).displayName + "\nWelcome To ☞ " + str(ginfo.name) + " ☜" + "\njangan lupa tikung aim\nDan Semoga Betah Disini ye ^_^")
-             line.sendImageWithURL(op.param1,image)
+             Galank.sendMessage(op.param1,"Hii " + Galank.getContact(op.param2).displayName + "\nWelcome To ☞ " + str(ginfo.name) + " ☜" + "\njangan lupa tikung\nDan Semoga Betah Disini ye")
+             Galank.sendImageWithURL(op.param1,image)
 
         if op.type == 15:
            print ("MEMBER LEAVE TO GROUP")
            if settings["Sambutan"] == True:
-             if op.param2 in lineMID:
+             if op.param2 in GalankMID:
                  return
-             ginfo = line.getGroup(op.param1)
-             contact = line.getContact(op.param2)
+             ginfo = Galank.getGroup(op.param1)
+             contact = Galank.getContact(op.param2)
              image = "http://dl.profile.line.naver.jp/" + contact.pictureStatus
-             line.sendImageWithURL(op.param1,image)
-             line.sendMessage(op.param1,"Good Bye " + line.getContact(op.param2).displayName + "\nSee You Next Time . . . (p′︵‵。)")
+             Galank.sendImageWithURL(op.param1,image)
+             Galank.sendMessage(op.param1,"Good Bye " + Galank.getContact(op.param2).displayName + "\nSee You Next Time .")
 #==============================================================================#
         if op.type == 55:
             print ("[ 55 ] NOTIFIED READ MESSAGE")
             try:
                 if cctv['cyduk'][op.param1]==True:
                     if op.param1 in cctv['point']:
-                        Name = line.getContact(op.param2).displayName
+                        Name = Galank.getContact(op.param2).displayName
                         if Name in cctv['sidermem'][op.param1]:
                             pass
                         else:
@@ -2585,15 +2612,15 @@ def GalankBot(op):
                             if " " in Name:
                                 nick = Name.split(' ')
                                 if len(nick) == 2:
-                                    line.sendMessage(op.param1, "Wᴏɪɪɪ!!!!! " + "☞ " + nick[0] + " ☜" + "\nBᴇᴛᴀʜ ᴀᴍᴀᴛ ʟᴏ ᴊᴀᴅɪ sɪᴅᴇʀ \nᴀᴅᴀ ʏᴀɴɢ ɢᴀᴊɪ ʏ ᴊᴀᴅɪ sɪᴅᴇʀ ")
+                                    Galank.sendMessage(op.param1, "Woii!!!!! " + "☞ " + nick[0] + " ☜" + "\nBᴇᴛᴀʜ ᴀᴍᴀᴛ ʟᴏ ᴊᴀᴅɪ sɪᴅᴇʀ \nᴀᴅᴀ ʏᴀɴɢ ɢᴀᴊɪ ʏ ᴊᴀᴅɪ sɪᴅᴇʀ ")
                                     time.sleep(0.2)
                                     mentionMembers(op.param1,[op.param2])
                                 else:
-                                    line.sendMessage(op.param1, "Assᴀʟᴀᴍᴜᴀʟᴀɪᴋᴜᴍ " + "☞" + nick[1] + " ☜" + "\nnNɢɪɴᴛɪᴘ ᴍᴇʟᴜʟᴜ \nᴍᴇɴᴅɪɴɢ sɪɴɪ \nᴋɪᴛᴀ ɴɢᴇʀᴜᴍᴘɪ ")
+                                    Galank.sendMessage(op.param1, "Assᴀʟᴀᴍᴜᴀʟᴀɪᴋᴜᴍ " + "☞" + nick[1] + " ☜" + "\nnNɢɪɴᴛɪᴘ ᴍᴇʟᴜʟᴜ \nᴍᴇɴᴅɪɴɢ sɪɴɪ \nᴋɪᴛᴀ ɴɢᴇʀᴜᴍᴘɪ ")
                                     time.sleep(0.2)
                                     mentionMembers(op.param1,[op.param2])
                             else:
-                                line.sendMessage(op.param1, "Nᴀʜʜʜ " + "☞ " + Name + " ☜" + "\nKᴇᴛᴀᴜᴡᴀɴ ɴɢɪɴᴛɪᴘ \nHᴀʜᴀʜᴀ ")
+                                Galank.sendMessage(op.param1, "Nahkan " + "☞ " + Name + " ☜" + "\nKᴇᴛᴀᴜᴡᴀɴ ɴɢɪɴᴛɪᴘ \nHᴀʜᴀʜᴀ ")
                                 time.sleep(0.2)
                                 mentionMembers(op.param1,[op.param2])
                     else:
@@ -2626,7 +2653,7 @@ while True:
         ops = oepoll.singleTrace(count=50)
         if ops is not None:
             for op in ops:
-                lineBot(op)
+                GalankBot(op)
                 oepoll.setRevision(op.revision)
     except Exception as e:
         logError(e)
