@@ -12,6 +12,16 @@ from googletrans import Translator
 #==============================================================================#
 botStart = time.time()
 
+# Oke Aku Kasih Tau ya
+# Biar kalian gak nanya lagii
+# Selfpython3 ini pake token Desktopwin
+# Biar jelas dan gak nanya lagii
+# Script free tinggal pake aja kok
+# Hargai saya stah jangan di ganti mid nya
+# Tabahin aja mid kalian
+# Gabung team kalian donk
+# Invite me [ID LINE] fuck.you__
+
 #Galank = LINE()
 Galank = LINE("TOKENMU BEB")
 #Galank = LINE("Email","Password")
