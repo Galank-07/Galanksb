@@ -18,7 +18,7 @@ botStart = time.time()
 # Biar jelas dan gak nanya lagii
 # Script free tinggal pake aja kok
 # Hargai saya stah jangan di ganti mid nya
-# Tabahin aja mid kalian
+# Tambahin aja mid kalian
 # Gabung team kalian donk
 # Invite me [ID LINE] fuck.you__
 
