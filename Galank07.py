@@ -236,7 +236,7 @@ def helpmessage():
                   "╠➣ GroupList" + "\n" + \
                   "╠➣ GroupMemberList" + "\n" + \
                   "╠➣ GroupInfo" + "\n" + \
-                  "╠➣ Creator" + "\n" + \
+                  "╠➣ Invitegroupcall" + "\n" + \
                   "╠➣ Mimic「On/Off」" + "\n" + \
                   "╠➣ MimicList" + "\n" + \
                   "╠➣ MimicAdd「Mention」" + "\n" + \
@@ -2304,7 +2304,7 @@ def GalankBot(op):
                                 sep = text.split(" ")
                                 strnum = text.replace(sep[0] + " ","")
                                 num = int(strnum)
-                                line.sendMessage(to, "Berhasil mengundang kedalam telponan group")
+                                Galank.sendMessage(to, "Berhasil mengundang kedalam telponan group")
                                 for var in range(0,num):
                                     group = Galank.getGroup(to)
                                     members = [mem.mid for mem in group.members]
