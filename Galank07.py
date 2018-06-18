@@ -964,7 +964,7 @@ def GalankBot(op):
                             read['ROM'][msg.to] = {}
                             with open('read.json', 'w') as fp:
                                 json.dump(read, fp, sort_keys=True, indent=4)
-                                line.sendMessage(msg.to,"Lurking already on")
+                                Galank.sendMessage(msg.to,"Lurking already on")
                     else:
                         try:
                             del read['readPoint'][msg.to]
