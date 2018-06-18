@@ -436,10 +436,10 @@ def GalankBot(op):
         if op.type == 5:
             print ("[ 5 ] NOTIFIED ADD CONTACT")
             if settings["autoAdd"] == True:
-                Galank.sendMessage(op.param1, "Halo {} terimakasih telah menambahkan saya sebagai teman :D".format(str(line.getContact(op.param1).displayName)))
+                Galank.sendMessage(op.param1, "Halo {} terimakasih telah menambahkan saya sebagai teman :D".format(str(Galank.getContact(op.param1).displayName)))
         if op.type == 13:
             print ("[ 13 ] NOTIFIED INVITE GROUP")
-            group = line.getGroup(op.param1)
+            group = Galank.getGroup(op.param1)
             if settings["autoJoin"] == True:
                 Galank.acceptGroupInvitation(op.param1)
         if op.type == 24:
@@ -648,7 +648,7 @@ def GalankBot(op):
                             if mention["M"] not in lists:
                                 lists.append(mention["M"])
                         for ls in lists:
-                            path = "http://dl.profile.line.naver.jp/" + line.getContact(ls).pictureStatus
+                            path = "http://dl.profile.line.naver.jp/" + Galank.getContact(ls).pictureStatus
                             Galank.sendImageWithURL(msg.to, str(path))
                 elif msg.text.lower().startswith("stealvideoprofile "):
                     if 'MENTION' in msg.contentMetadata.keys()!= None:
@@ -663,7 +663,7 @@ def GalankBot(op):
                             path = "http://dl.profile.Galank.naver.jp/" + Galank.getContact(ls).pictureStatus + "/vp"
                             Galank.sendImageWithURL(msg.to, str(path))
                 elif msg.text.lower().startswith("stealcover "):
-                    if line != None:
+                    if Galank != None:
                         if 'MENTION' in msg.contentMetadata.keys()!= None:
                             names = re.findall(r'@(\w+)', text)
                             mention = ast.literal_eval(msg.contentMetadata['MENTION'])
@@ -978,7 +978,7 @@ def GalankBot(op):
                         read['ROM'][msg.to] = {}
                         with open('read.json', 'w') as fp:
                             json.dump(read, fp, sort_keys=True, indent=4)
-                            line.sendMessage(msg.to, "Set reading point:\n" + readTime)
+                            Galank.sendMessage(msg.to, "Set reading point:\n" + readTime)
                             
                 elif text.lower() == 'lurking off':
                     tz = pytz.timezone("Asia/Jakarta")
@@ -1002,7 +1002,7 @@ def GalankBot(op):
                             del read['readTime'][msg.to]
                         except:
                               pass
-                        line.sendMessage(msg.to, "Delete reading point:\n" + readTime)
+                        Galank.sendMessage(msg.to, "Delete reading point:\n" + readTime)
     
                 elif text.lower() == 'lurking reset':
                     tz = pytz.timezone("Asia/Jakarta")
